@@ -31,23 +31,14 @@ public class BankSystem {
     }
 
     // Create a new bank account for a user
-    public Account createAccount(String accountNumber, User user) {
-        Account account = new Account(accountNumber, user);
+    public Account createAccount(User user) {
+        Account account = new Account(user);  // Automatically generate random account number
         accounts.add(account);
-        System.out.println("Account created successfully!");
+        System.out.println("Account created successfully! Account Number: " + account.getAccountNumber());
         return account;
     }
 
-    // Find account by account number or user
-    public Account findAccountByUser(User user) {
-        for (Account account : accounts) {
-            if (account.getUser().equals(user)) {
-                return account;
-            }
-        }
-        return null;  // If no account found for the user
-    }
-
+    // Find account by account number
     public Account findAccount(String accountNumber) {
         for (Account account : accounts) {
             if (account.getAccountNumber().equals(accountNumber)) {
@@ -55,6 +46,16 @@ public class BankSystem {
             }
         }
         return null;
+    }
+
+    // Find account by user
+    public Account findAccountByUser(User user) {
+        for (Account account : accounts) {
+            if (account.getUser().equals(user)) {
+                return account;
+            }
+        }
+        return null;  // If no account found for the user
     }
 
     // Transfer money between two accounts

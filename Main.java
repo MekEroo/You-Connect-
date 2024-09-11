@@ -23,7 +23,7 @@ public class Main {
                 System.out.print("Enter password: ");
                 String password = scanner.nextLine();
                 loggedInUser = bankSystem.registerUser(username, password);
-                userAccount = bankSystem.createAccount("ACC" + System.currentTimeMillis(), loggedInUser);
+                userAccount = bankSystem.createAccount(loggedInUser);  // Account created with random number
 
             } else if (choice == 2) {
                 // Login existing user
@@ -39,7 +39,7 @@ public class Main {
 
                     // Ensure user has an account, if not, create one
                     if (userAccount == null) {
-                        userAccount = bankSystem.createAccount("ACC" + System.currentTimeMillis(), loggedInUser);
+                        userAccount = bankSystem.createAccount(loggedInUser);
                     }
 
                     // User logged in successfully, proceed with banking operations

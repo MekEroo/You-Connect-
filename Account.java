@@ -1,16 +1,18 @@
+import java.util.UUID; // For generating unique account numbers
+
 public class Account {
     private String accountNumber;
     private double balance;
     private User user;
 
-    // Constructor
-    public Account(String accountNumber, User user) {
-        this.accountNumber = accountNumber;
+    // Constructor that generates a random account number
+    public Account(User user) {
+        this.accountNumber = generateRandomAccountNumber();
         this.user = user;
         this.balance = 0.0;  // Start with zero balance
     }
 
-    // Getters
+    // Getter for accountNumber
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -41,5 +43,10 @@ public class Account {
         } else {
             System.out.println("Insufficient balance or invalid amount.");
         }
+    }
+
+    // Generate a random account number using UUID
+    private String generateRandomAccountNumber() {
+        return UUID.randomUUID().toString().substring(0, 10); // Shorten to 10 characters
     }
 }
