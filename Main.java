@@ -34,6 +34,16 @@ public class Main {
                 loggedInUser = bankSystem.login(username, password);
 
                 if (loggedInUser != null) {
+                    // Find the user's account and assign it to userAccount
+                    userAccount = bankSystem.findAccountByUser(loggedInUser);
+
+                    // Ensure user has an account, if not, create one
+                    if (userAccount == null) {
+                        userAccount = bankSystem.createAccount("ACC" + System.currentTimeMillis(), loggedInUser);
+                    }
+
+                    // User logged in successfully, proceed with banking operations
+                    while (true) {
                         System.out.println("\n1. View Balance");
                         System.out.println("2. Deposit");
                         System.out.println("3. Withdraw");
