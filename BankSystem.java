@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BankSystem {
     private ArrayList<User> users;
@@ -39,7 +38,16 @@ public class BankSystem {
         return account;
     }
 
-    // Find account by account number
+    // Find account by account number or user
+    public Account findAccountByUser(User user) {
+        for (Account account : accounts) {
+            if (account.getUser().equals(user)) {
+                return account;
+            }
+        }
+        return null;  // If no account found for the user
+    }
+
     public Account findAccount(String accountNumber) {
         for (Account account : accounts) {
             if (account.getAccountNumber().equals(accountNumber)) {

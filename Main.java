@@ -34,8 +34,6 @@ public class Main {
                 loggedInUser = bankSystem.login(username, password);
 
                 if (loggedInUser != null) {
-                    userAccount = bankSystem.findAccount("ACC" + loggedInUser.getUsername().hashCode());
-                    while (loggedInUser != null) {
                         System.out.println("\n1. View Balance");
                         System.out.println("2. Deposit");
                         System.out.println("3. Withdraw");
